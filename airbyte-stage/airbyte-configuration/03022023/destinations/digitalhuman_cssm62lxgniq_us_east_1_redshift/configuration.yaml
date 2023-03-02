@@ -1,0 +1,14 @@
+resource_name: digitalhuman.cssm62lxgniq.us-east-1.redshift
+definition_type: destination
+definition_id: f7a7d195-377f-cf5b-70a5-be6b819019dc
+definition_image: airbyte/destination-redshift
+definition_version: 0.3.56
+configuration:
+  host: digitalhuman.cssm62lxgniq.us-east-1.redshift.amazonaws.com
+  port: 5439
+  schema: dhpublic
+  database: dev
+  password: '**********'
+  username: awsuser
+  uploading_method:
+    method: Standard
