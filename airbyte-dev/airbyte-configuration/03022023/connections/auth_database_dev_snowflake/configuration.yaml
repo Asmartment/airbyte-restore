@@ -1,0 +1,1304 @@
+definition_type: connection
+resource_name: Auth Database DEV <> Snowflake
+source_configuration_path: sources/auth_database_dev/configuration.yaml
+destination_configuration_path: destinations/snowflake/configuration.yaml
+configuration:
+  sync_catalog:
+    streams:
+    - stream:
+        name: app_accesses
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            disabled:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            revoked:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            app_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: app_accesses
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: states
+        json_schema:
+          type: object
+          properties:
+            code:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: states
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: customer_user_app_roles
+        json_schema:
+          type: object
+          properties:
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            is_global:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            app_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: customer_user_app_roles
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: profile_snapshots
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            profile_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            value:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: profile_snapshots
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: permissions
+        json_schema:
+          type: object
+          properties:
+            value_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            permission_external_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            alias:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            is_supported_by_custom_roles:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            app_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: permissions
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: batch_step_execution_context
+        json_schema:
+          type: object
+          properties:
+            short_context:
+              $ref: WellKnownTypes.json#/definitions/String
+            serialized_context:
+              $ref: WellKnownTypes.json#/definitions/String
+            step_execution_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - step_execution_id
+        namespace: batch
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - step_execution_id
+        alias_name: batch_step_execution_context
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: batch_job_execution_params
+        json_schema:
+          type: object
+          properties:
+            type_cd:
+              $ref: WellKnownTypes.json#/definitions/String
+            date_val:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            key_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            string_val:
+              $ref: WellKnownTypes.json#/definitions/String
+            identifying:
+              $ref: WellKnownTypes.json#/definitions/String
+            double_val:
+              $ref: WellKnownTypes.json#/definitions/Number
+            job_execution_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            long_val:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: batch
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: batch_job_execution_params
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: license_customer_attribute_values
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            license_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            attribute_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            value:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: license_customer_attribute_values
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: batch_job_execution_context
+        json_schema:
+          type: object
+          properties:
+            short_context:
+              $ref: WellKnownTypes.json#/definitions/String
+            serialized_context:
+              $ref: WellKnownTypes.json#/definitions/String
+            job_execution_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - job_execution_id
+        namespace: batch
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - job_execution_id
+        alias_name: batch_job_execution_context
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: app_roles
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            alias:
+              $ref: WellKnownTypes.json#/definitions/String
+            is_custom:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            role_external_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            app_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: app_roles
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: batch_job_execution
+        json_schema:
+          type: object
+          properties:
+            exit_message:
+              $ref: WellKnownTypes.json#/definitions/String
+            start_time:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            last_updated:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            create_time:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            job_configuration_location:
+              $ref: WellKnownTypes.json#/definitions/String
+            job_execution_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            end_time:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            exit_code:
+              $ref: WellKnownTypes.json#/definitions/String
+            job_instance_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            version:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            status:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - job_execution_id
+        namespace: batch
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - job_execution_id
+        alias_name: batch_job_execution
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: license_community_attribute_values
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            attribute_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            license_community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            value:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: license_community_attribute_values
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: apps
+        json_schema:
+          type: object
+          properties:
+            code:
+              $ref: WellKnownTypes.json#/definitions/String
+            api_endpoint:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            bundle_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_user_agnostic:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            version:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            status:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_agnostic:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: apps
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: customers
+        json_schema:
+          type: object
+          properties:
+            zip:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            city:
+              $ref: WellKnownTypes.json#/definitions/String
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            address_line_1:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            state:
+              $ref: WellKnownTypes.json#/definitions/String
+            address_line_2:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: customers
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: app_sync_results
+        json_schema:
+          type: object
+          properties:
+            super_admin_sync_result:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_sync_result:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            success:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            profile_sync_result:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_sync_result:
+              $ref: WellKnownTypes.json#/definitions/String
+            app_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            status:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: app_sync_results
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: batch_job_instance
+        json_schema:
+          type: object
+          properties:
+            job_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            job_instance_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            job_key:
+              $ref: WellKnownTypes.json#/definitions/String
+            version:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - job_instance_id
+        namespace: batch
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - job_instance_id
+        alias_name: batch_job_instance
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: meta_roles
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            bundle_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: meta_roles
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: users
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            last_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            first_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: users
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_import_results
+        json_schema:
+          type: object
+          properties:
+            file_path:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            write_count:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            skip_count:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            status:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: community_import_results
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: meta_role_mappings
+        json_schema:
+          type: object
+          properties:
+            app_role_app_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            app_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            app_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            meta_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: meta_role_mappings
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: customer_user
+        json_schema:
+          type: object
+          properties:
+            preferences:
+              $ref: WellKnownTypes.json#/definitions/String
+            last_login_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            role:
+              $ref: WellKnownTypes.json#/definitions/String
+            active:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            last_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            cognito_confirmed:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            personal_phone_number:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            contact_in_sync:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            sms_phone_number:
+              $ref: WellKnownTypes.json#/definitions/String
+            user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            work_phone_number:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            first_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: customer_user
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: bundles
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            type:
+              $ref: WellKnownTypes.json#/definitions/String
+            app_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: bundles
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: licenses
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            bundle_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            number_of_communities:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: licenses
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: license_communities
+        json_schema:
+          type: object
+          properties:
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            license_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: license_communities
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: batch_step_execution
+        json_schema:
+          type: object
+          properties:
+            exit_message:
+              $ref: WellKnownTypes.json#/definitions/String
+            last_updated:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            job_execution_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            step_execution_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            end_time:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            rollback_count:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            version:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            write_skip_count:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            start_time:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            commit_count:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            process_skip_count:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            step_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            read_skip_count:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            exit_code:
+              $ref: WellKnownTypes.json#/definitions/String
+            write_count:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            filter_count:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            status:
+              $ref: WellKnownTypes.json#/definitions/String
+            read_count:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - step_execution_id
+        namespace: batch
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - step_execution_id
+        alias_name: batch_step_execution
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: users_identities
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            cognito_user_pool_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            mfa_required:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            confirmed:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            cognito_user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: users_identities
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: communities
+        json_schema:
+          type: object
+          properties:
+            city:
+              $ref: WellKnownTypes.json#/definitions/String
+            leasing_agent:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            sms_phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_logo_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            tour_duration:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            address_line_1:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            state:
+              $ref: WellKnownTypes.json#/definitions/String
+            address_line_2:
+              $ref: WellKnownTypes.json#/definitions/String
+            twitter_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            corporate_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_image_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            zip:
+              $ref: WellKnownTypes.json#/definitions/String
+            facebook_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            mailing_city:
+              $ref: WellKnownTypes.json#/definitions/String
+            leasing_email:
+              $ref: WellKnownTypes.json#/definitions/String
+            floorplans_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_management:
+              $ref: WellKnownTypes.json#/definitions/String
+            owner_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            mailing_state:
+              $ref: WellKnownTypes.json#/definitions/String
+            mailing_address_line_1:
+              $ref: WellKnownTypes.json#/definitions/String
+            mailing_address_line_2:
+              $ref: WellKnownTypes.json#/definitions/String
+            pinterest_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            mailing_zip:
+              $ref: WellKnownTypes.json#/definitions/String
+            online_payment_email:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_logo_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            virtual_tour_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            website_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            instagram_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            tour_scheduling_model:
+              $ref: WellKnownTypes.json#/definitions/String
+            phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_image_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            working_hours:
+              $ref: WellKnownTypes.json#/definitions/String
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            timezone_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: communities
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: customer_user_meta_roles
+        json_schema:
+          type: object
+          properties:
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            is_global:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            meta_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: customer_user_meta_roles
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_import_errors
+        json_schema:
+          type: object
+          properties:
+            field:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            line:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            result_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            message:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: community_import_errors
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: role_permission
+        json_schema:
+          type: object
+          properties:
+            permission_value:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            permission_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            app_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: role_permission
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: flyway_schema_history
+        json_schema:
+          type: object
+          properties:
+            installed_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            success:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            checksum:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            installed_on:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            type:
+              $ref: WellKnownTypes.json#/definitions/String
+            version:
+              $ref: WellKnownTypes.json#/definitions/String
+            script:
+              $ref: WellKnownTypes.json#/definitions/String
+            execution_time:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            installed_rank:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - installed_rank
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - installed_rank
+        alias_name: flyway_schema_history
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: attributes
+        json_schema:
+          type: object
+          properties:
+            allowed_values:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            default_value:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            app_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            key:
+              $ref: WellKnownTypes.json#/definitions/String
+            current_value:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: auth
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: attributes
+        selected: true
+        field_selection_enabled: false
+  status: active
+  schema_change: non_breaking
+  notify_schema_changes: true
+  non_breaking_changes_preference: ignore
+  namespace_definition: customformat
+  namespace_format: pms${SOURCE_NAMESPACE}
+  prefix: ''
+  schedule_type: basic
+  schedule_data:
+    basic_schedule:
+      time_unit: hours
+      units: 1
+  operations:
+  - name: Normalization
+    operator_configuration:
+      operator_type: normalization
+      normalization:
+        option: basic
+  geography: auto
