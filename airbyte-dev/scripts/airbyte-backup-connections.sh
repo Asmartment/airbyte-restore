@@ -1,13 +1,13 @@
 #!/bin/bash
 
 
-DATE=`date +%m%d%Y`
+#DATE=`date +%m%d%Y`
+DATE="2023022"
 CONF="airbyte-restore/airbyte-dev/airbyte-configuration"
 GH_REPO="https://github.com/Asmartment/airbyte-restore"
-OCTAVIA="docker run -i --rm -v .:/home/octavia-project --network host   airbyte/octavia-cli:0.40.32"
 SLACK_WEBHOOK="https://hooks.slack.com/services/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"
-AIRBYTE_HOST="ec2-44-193-9-158.compute-1.amazonaws.com"
-#AIRBYTE_URL="http://localhost"
+#AIRBYTE_HOST="ec2-44-193-9-158.compute-1.amazonaws.com"
+AIRBYTE_HOST="localhost"
 AIRBYTE_PORT="8000"
 
 
@@ -42,6 +42,7 @@ mkdir -p $CONF/$DATE
 cd $CONF/$DATE
 
 echo "downloading backup..."
+OCTAVIA="docker run -i --rm -v $(pwd):/home/octavia-project --network host --user $(id -u):$(id -g) airbyte/octavia-cli:0.40.32"
 $OCTAVIA init
 $OCTAVIA --airbyte-url http://$AIRBYTE_HOST:$AIRBYTE_PORT import all 
 if [ "$?" -ne 0 ]; then
