@@ -1,0 +1,16 @@
+resource_name: Snowflake
+definition_type: destination
+definition_id: 424892c4-daac-4491-b35d-c6688ba547ba
+definition_image: airbyte/destination-snowflake
+definition_version: 0.4.47
+configuration:
+  host: yqb44523.us-east-1.snowflakecomputing.com
+  role: PMS_DEV_ROLE
+  schema: PMS_DEV_SCHEMA
+  database: PMS_DEV_DATABASE
+  username: PMS_DEV
+  warehouse: PMS_DEV_WAREHOUSE
+  credentials:
+    password: '**********'
+  loading_method:
+    method: Internal Staging
