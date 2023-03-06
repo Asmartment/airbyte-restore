@@ -2,12 +2,12 @@
 
 
 #DATE=`date +%m%d%Y`
-DATE="2023022"
+DATE="2023025"
 CONF="airbyte-restore/airbyte-dev/airbyte-configuration"
 GH_REPO="https://github.com/Asmartment/airbyte-restore"
 SLACK_WEBHOOK="https://hooks.slack.com/services/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"
-#AIRBYTE_HOST="ec2-44-193-9-158.compute-1.amazonaws.com"
-AIRBYTE_HOST="localhost"
+AIRBYTE_HOST="ec2-44-193-9-158.compute-1.amazonaws.com"
+#AIRBYTE_HOST="localhost"
 AIRBYTE_PORT="8000"
 
 
@@ -57,12 +57,12 @@ else
   git push 
 
 fi
-}
+}  
 
 while test $# -gt 0; do
 	 case "$1" in
     --backup)
-		take_airbyte_backup
+		take_airbyte_backup  2>&1 | tee take-backup-$DATE.log
 	    exit 0
       ;;
     --test-connections)
