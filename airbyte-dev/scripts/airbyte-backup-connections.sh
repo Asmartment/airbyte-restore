@@ -1,13 +1,13 @@
 #!/bin/bash
 
 
-#DATE=`date +%m%d%Y`
-DATE="2023025"
+DATE=`date +%m%d%Y`
+#DATE="2023025"
 CONF="airbyte-restore/airbyte-dev/airbyte-configuration"
 GH_REPO="https://github.com/Asmartment/airbyte-restore"
 SLACK_WEBHOOK="https://hooks.slack.com/services/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"
-AIRBYTE_HOST="ec2-44-193-9-158.compute-1.amazonaws.com"
-#AIRBYTE_HOST="localhost"
+#AIRBYTE_HOST="ec2-44-193-9-158.compute-1.amazonaws.com"
+AIRBYTE_HOST="localhost"
 AIRBYTE_PORT="8000"
 
 
@@ -55,6 +55,10 @@ else
   git add .
   git commit -m "add airbyte backup connections $DATE"
   git push 
+  if [ "$?" -eq 0 ]; then
+	  rm -rf /home/airbyte/airbyte-restore
+  fi
+
 
 fi
 }  
