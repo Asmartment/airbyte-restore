@@ -1,0 +1,721 @@
+definition_type: connection
+resource_name: ips_dev_snowflake_integration_dev
+source_configuration_path: sources/ips_dev/configuration.yaml
+destination_configuration_path: destinations/snowflake_integration_dev/configuration.yaml
+configuration:
+  sync_catalog:
+    streams:
+    - stream:
+        name: community_partner_key_values
+        json_schema:
+          type: object
+          properties:
+            key_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            partner_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            community_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+            key_value:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - community_uuid
+        - - partner_name
+        - - key_name
+        namespace: public
+      config:
+        sync_mode: incremental
+        destination_sync_mode: append_dedup
+        cursor_field:
+        - updated_at
+        primary_key:
+        - - community_uuid
+        - - partner_name
+        - - key_name
+        alias_name: community_partner_key_values
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: partners
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            logo_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            partner_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+            partner_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - partner_name
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key:
+        - - partner_name
+        alias_name: partners
+        selected: false
+        suggested: true
+    - stream:
+        name: migrations
+        json_schema:
+          type: object
+          properties:
+            batch:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            migration:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: migrations
+        selected: false
+        suggested: true
+    - stream:
+        name: purposes
+        json_schema:
+          type: object
+          properties:
+            purpose_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            purpose_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            active:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            purpose_description:
+              $ref: WellKnownTypes.json#/definitions/String
+            category_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - purpose_name
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key:
+        - - purpose_name
+        alias_name: purposes
+        selected: false
+        suggested: true
+    - stream:
+        name: permissions
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            alias:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            is_supported_by_custom_roles:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            type:
+              $ref: WellKnownTypes.json#/definitions/String
+            permission_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            value:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key: []
+        alias_name: permissions
+        selected: false
+        suggested: true
+    - stream:
+        name: purpose_categories
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            category_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key: []
+        alias_name: purpose_categories
+        selected: false
+        suggested: true
+    - stream:
+        name: customer_users
+        json_schema:
+          type: object
+          properties:
+            acl_configs:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            identity_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            last_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            customer_user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            first_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key: []
+        alias_name: customer_users
+        selected: false
+        suggested: true
+    - stream:
+        name: failed_jobs
+        json_schema:
+          type: object
+          properties:
+            exception:
+              $ref: WellKnownTypes.json#/definitions/String
+            payload:
+              $ref: WellKnownTypes.json#/definitions/String
+            connection:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            failed_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            queue:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: failed_jobs
+        selected: false
+        suggested: true
+    - stream:
+        name: identities
+        json_schema:
+          type: object
+          properties:
+            role:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            identity_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            last_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            first_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            cognito_user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key: []
+        alias_name: identities
+        selected: false
+        suggested: true
+    - stream:
+        name: community_purpose_partners
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            purpose_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            partner_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            community_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - community_uuid
+        - - purpose_name
+        namespace: public
+      config:
+        sync_mode: incremental
+        destination_sync_mode: append_dedup
+        cursor_field:
+        - updated_at
+        primary_key:
+        - - community_uuid
+        - - purpose_name
+        alias_name: community_purpose_partners
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: communities
+        json_schema:
+          type: object
+          properties:
+            owner:
+              $ref: WellKnownTypes.json#/definitions/String
+            mailing_city:
+              $ref: WellKnownTypes.json#/definitions/String
+            mailing_state:
+              $ref: WellKnownTypes.json#/definitions/String
+            city:
+              $ref: WellKnownTypes.json#/definitions/String
+            mailing_address_line_1:
+              $ref: WellKnownTypes.json#/definitions/String
+            mailing_address_line_2:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            website_url:
+              $ref: WellKnownTypes.json#/definitions/String
+            phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            timezone_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            address_line_1:
+              $ref: WellKnownTypes.json#/definitions/String
+            mailing_postal_code:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+            state:
+              $ref: WellKnownTypes.json#/definitions/String
+            address_line_2:
+              $ref: WellKnownTypes.json#/definitions/String
+            postal_code:
+              $ref: WellKnownTypes.json#/definitions/String
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - community_uuid
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field:
+        - updated_at
+        primary_key:
+        - - community_uuid
+        alias_name: communities
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: app_info
+        json_schema:
+          type: object
+          properties:
+            code:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            version:
+              $ref: WellKnownTypes.json#/definitions/String
+            auth_api_version:
+              $ref: WellKnownTypes.json#/definitions/String
+            is_customer_user_agnostic:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            is_community_agnostic:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key: []
+        alias_name: app_info
+        selected: false
+        suggested: true
+    - stream:
+        name: partner_onetimelink
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            api_key:
+              $ref: WellKnownTypes.json#/definitions/String
+            partner_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            url_fragment:
+              $ref: WellKnownTypes.json#/definitions/String
+            user:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - partner_uuid
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key:
+        - - partner_uuid
+        alias_name: partner_onetimelink
+        selected: false
+        suggested: true
+    - stream:
+        name: customers
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            is_authorized:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key: []
+        alias_name: customers
+        selected: false
+        suggested: true
+    - stream:
+        name: partner_security
+        json_schema:
+          type: object
+          properties:
+            security:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            partner_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            user:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key: []
+        alias_name: partner_security
+        selected: false
+        suggested: true
+    - stream:
+        name: roles
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            alias:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key: []
+        alias_name: roles
+        selected: false
+        suggested: true
+    - stream:
+        name: purpose_partners
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            purpose_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            partner_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - purpose_name
+        - - partner_name
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key:
+        - - purpose_name
+        - - partner_name
+        alias_name: purpose_partners
+        selected: false
+        suggested: true
+    - stream:
+        name: password_resets
+        json_schema:
+          type: object
+          properties:
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+            token:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key: []
+        alias_name: password_resets
+        selected: false
+        suggested: true
+    - stream:
+        name: users
+        json_schema:
+          type: object
+          properties:
+            password:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            email_verified_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            remember_token:
+              $ref: WellKnownTypes.json#/definitions/String
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: users
+        selected: false
+        suggested: true
+    - stream:
+        name: partner_keys
+        json_schema:
+          type: object
+          properties:
+            key_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            partner_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+            partner_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            key_description:
+              $ref: WellKnownTypes.json#/definitions/String
+            uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - partner_name
+        - - key_name
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: append
+        cursor_field: []
+        primary_key:
+        - - partner_name
+        - - key_name
+        alias_name: partner_keys
+        selected: false
+        suggested: true
+  status: active
+  schema_change: no_change
+  notify_schema_changes: true
+  non_breaking_changes_preference: ignore
+  namespace_definition: customformat
+  namespace_format: quext_sources
+  prefix: src_quext_ips_
+  schedule_type: cron
+  schedule_data:
+    cron:
+      cron_expression: 0 0/30 * * * ?
+      cron_time_zone: UTC
+  operations:
+  - name: Normalization
+    operator_configuration:
+      operator_type: normalization
+      normalization:
+        option: basic
+  geography: auto
