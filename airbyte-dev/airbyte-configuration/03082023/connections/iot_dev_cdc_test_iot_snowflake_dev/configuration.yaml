@@ -1,0 +1,368 @@
+definition_type: connection
+resource_name: IoT DEV CDC test <> IoT Snowflake Dev
+source_configuration_path: sources/iot_dev_cdc_test/configuration.yaml
+destination_configuration_path: destinations/iot_snowflake_dev/configuration.yaml
+configuration:
+  sync_catalog:
+    streams:
+    - stream:
+        name: user_revision_entity
+        json_schema:
+          type: object
+          properties:
+            _ab_cdc_updated_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            changed_by_user_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            _ab_cdc_deleted_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_lsn:
+              $ref: WellKnownTypes.json#/definitions/Number
+            id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            timestamp:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        source_defined_cursor: true
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: public
+      config:
+        sync_mode: incremental
+        destination_sync_mode: append_dedup
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: user_revision_entity
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: lock_audit_log_record
+        json_schema:
+          type: object
+          properties:
+            parsed_value:
+              $ref: WellKnownTypes.json#/definitions/String
+            event_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            record_data:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_updated_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_deleted_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_lsn:
+              $ref: WellKnownTypes.json#/definitions/Number
+            id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            record_timestamp:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            lock_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        source_defined_cursor: true
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: public
+      config:
+        sync_mode: incremental
+        destination_sync_mode: append_dedup
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: lock_audit_log_record
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: lock_database_transaction_action
+        json_schema:
+          type: object
+          properties:
+            transaction_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_updated_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            action:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_deleted_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_lsn:
+              $ref: WellKnownTypes.json#/definitions/Number
+            execution_result:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        source_defined_cursor: true
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: public
+      config:
+        sync_mode: incremental
+        destination_sync_mode: append_dedup
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: lock_database_transaction_action
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: pdk_audit_log
+        json_schema:
+          type: object
+          properties:
+            cloud_node_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_deleted_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_lsn:
+              $ref: WellKnownTypes.json#/definitions/Number
+            location_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            raw_event:
+              $ref: WellKnownTypes.json#/definitions/String
+            occurred_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            pdk_log_entry_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            pdk_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            event_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            pdk_device_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            user_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            _ab_cdc_updated_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        source_defined_cursor: true
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: public
+      config:
+        sync_mode: incremental
+        destination_sync_mode: append_dedup
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: pdk_audit_log
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: location_history
+        json_schema:
+          type: object
+          properties:
+            building_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            building_mod:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            rev:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            parent_mod:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            state_mod:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            location_flag_mod:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            unit_status:
+              $ref: WellKnownTypes.json#/definitions/String
+            revtype:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            leases_mod:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_deleted_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_lsn:
+              $ref: WellKnownTypes.json#/definitions/Number
+            unit_status_mod:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            location_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            name_mod:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            location_flag:
+              $ref: WellKnownTypes.json#/definitions/String
+            parent_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            description_mod:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            _ab_cdc_updated_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            state:
+              $ref: WellKnownTypes.json#/definitions/String
+            leases_secondary_location_mod:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            location_type_mod:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        source_defined_cursor: true
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        - - rev
+        namespace: public
+      config:
+        sync_mode: incremental
+        destination_sync_mode: append_dedup
+        cursor_field: []
+        primary_key:
+        - - id
+        - - rev
+        alias_name: location_history
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: user_access_to_location
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            user_access_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            _ab_cdc_updated_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            _ab_cdc_deleted_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_lsn:
+              $ref: WellKnownTypes.json#/definitions/Number
+            user_access_level:
+              $ref: WellKnownTypes.json#/definitions/String
+            location_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: user_access_to_location
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: lock_connection_log
+        json_schema:
+          type: object
+          properties:
+            log:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_updated_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_deleted_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_lsn:
+              $ref: WellKnownTypes.json#/definitions/Number
+            id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            lock_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            timestamp:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        source_defined_cursor: true
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: public
+      config:
+        sync_mode: incremental
+        destination_sync_mode: append_dedup
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: lock_connection_log
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: pdk_audit_logs_report
+        json_schema:
+          type: object
+          properties:
+            cloud_node_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_updated_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            stop_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            started_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            _ab_cdc_deleted_at:
+              $ref: WellKnownTypes.json#/definitions/String
+            _ab_cdc_lsn:
+              $ref: WellKnownTypes.json#/definitions/Number
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            sync_job_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            start_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        source_defined_cursor: true
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: public
+      config:
+        sync_mode: incremental
+        destination_sync_mode: append_dedup
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: pdk_audit_logs_report
+        selected: true
+        field_selection_enabled: false
+  status: active
+  schema_change: non_breaking
+  notify_schema_changes: true
+  non_breaking_changes_preference: ignore
+  namespace_definition: customformat
+  namespace_format: IOT_DEV_CDC
+  prefix: ''
+  schedule_type: cron
+  schedule_data:
+    cron:
+      cron_expression: '* * * * * ?'
+      cron_time_zone: UTC
+  operations:
+  - name: Normalization
+    operator_configuration:
+      operator_type: normalization
+      normalization:
+        option: basic
+  geography: auto
