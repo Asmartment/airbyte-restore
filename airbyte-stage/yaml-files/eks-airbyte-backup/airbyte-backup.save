@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: aws-costs-cron0 4 * * 1
+spec:
+  jobTemplate:
+	metadata:
+      name: cron-example
+    spec:
+      template:
+        spec:
+          containers:
+          - image: cron-example
+            imagePullPolicy: Never
+            name: cron-example
+            resources: {}
+          restartPolicy: OnFailure
+schedule: '*/1 * * * *'

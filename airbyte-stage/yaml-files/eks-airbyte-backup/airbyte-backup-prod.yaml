@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: aws-costs-cron
+spec:
+  jobTemplate:
+    metadata:
+        name: aws-costs-cron
+    spec:
+      template:
+        spec:
+          containers:
+          - image: 814670874755.dkr.ecr.us-east-1.amazonaws.com/aws-costs-cron:latest
+            name: aws-costs-cron
+            env:
+            - name: AWS_COST_PROJECT
+              value: PROD
+            - name: KUBECOST_NODE_IP
+              value: http://kubecost-service-kubecost.kubecost.svc.cluster.local:9090
+            imagePullPolicy: Always
+          restartPolicy: Never
+  schedule: '0 4 * * 1'
