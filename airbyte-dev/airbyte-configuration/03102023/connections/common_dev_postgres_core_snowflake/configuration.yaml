@@ -1,0 +1,592 @@
+definition_type: connection
+resource_name: common-dev-postgres-core <> Snowflake
+source_configuration_path: sources/common_dev_postgres_core/configuration.yaml
+destination_configuration_path: destinations/snowflake/configuration.yaml
+configuration:
+  sync_catalog:
+    streams:
+    - stream:
+        name: place_type
+        json_schema:
+          type: object
+          properties:
+            id_place_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            place_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_place_type
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_place_type
+        alias_name: place_type
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: space_in_area
+        json_schema:
+          type: object
+          properties:
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            area_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            space_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            property_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            id_space_in_area:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_space_in_area
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_space_in_area
+        alias_name: space_in_area
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: floor
+        json_schema:
+          type: object
+          properties:
+            floor_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            alias:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            floor:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            space_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            property_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            id_floor:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_floor
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_floor
+        alias_name: floor
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: property
+        json_schema:
+          type: object
+          properties:
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            property_legal_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            alias:
+              $ref: WellKnownTypes.json#/definitions/String
+            id_property:
+              $ref: WellKnownTypes.json#/definitions/String
+            property_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_property
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_property
+        alias_name: property
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: property_type
+        json_schema:
+          type: object
+          properties:
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            id_property_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            property_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_property_type
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_property_type
+        alias_name: property_type
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: place
+        json_schema:
+          type: object
+          properties:
+            id_place:
+              $ref: WellKnownTypes.json#/definitions/String
+            place_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            place_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            alias:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            space_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            property_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_place
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_place
+        alias_name: place
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: space_type
+        json_schema:
+          type: object
+          properties:
+            space_category:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            id_space_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            space_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_space_type
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_space_type
+        alias_name: space_type
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: area
+        json_schema:
+          type: object
+          properties:
+            area_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            alias:
+              $ref: WellKnownTypes.json#/definitions/String
+            id_area:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            area_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            property_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_area
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_area
+        alias_name: area
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: space_category
+        json_schema:
+          type: object
+          properties:
+            id_space_category:
+              $ref: WellKnownTypes.json#/definitions/String
+            space_category_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_space_category
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_space_category
+        alias_name: space_category
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: space_in_floor
+        json_schema:
+          type: object
+          properties:
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            id_space_in_floor:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            parent_space_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            floor_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            space_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            property_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_space_in_floor
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_space_in_floor
+        alias_name: space_in_floor
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: typeorm_metadata
+        json_schema:
+          type: object
+          properties:
+            schema:
+              $ref: WellKnownTypes.json#/definitions/String
+            database:
+              $ref: WellKnownTypes.json#/definitions/String
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            type:
+              $ref: WellKnownTypes.json#/definitions/String
+            value:
+              $ref: WellKnownTypes.json#/definitions/String
+            table:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: typeorm_metadata
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: area_type
+        json_schema:
+          type: object
+          properties:
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            id_area_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            area_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_area_type
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_area_type
+        alias_name: area_type
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: space
+        json_schema:
+          type: object
+          properties:
+            space_category:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            space_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            id_space:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            space_sq_ft:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            property_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            space_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            parent_space_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            space_description:
+              $ref: WellKnownTypes.json#/definitions/String
+            alias:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_space
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_space
+        alias_name: space
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: space_type_parent_restriction
+        json_schema:
+          type: object
+          properties:
+            updatedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            space_type_of_child:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdBy:
+              $ref: WellKnownTypes.json#/definitions/String
+            deletedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            space_type_of_parent:
+              $ref: WellKnownTypes.json#/definitions/String
+            updatedOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            id_space_Type_parent_restriction:
+              $ref: WellKnownTypes.json#/definitions/String
+            createdOn:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            deletedBy:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id_space_Type_parent_restriction
+        namespace: public
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id_space_Type_parent_restriction
+        alias_name: space_type_parent_restriction
+        selected: true
+        field_selection_enabled: false
+  status: active
+  schema_change: no_change
+  notify_schema_changes: true
+  non_breaking_changes_preference: ignore
+  namespace_definition: customformat
+  namespace_format: pmscore${SOURCE_NAMESPACE}
+  prefix: ''
+  schedule_type: basic
+  schedule_data:
+    basic_schedule:
+      time_unit: hours
+      units: 1
+  operations:
+  - name: Normalization
+    operator_configuration:
+      operator_type: normalization
+      normalization:
+        option: basic
+  geography: auto
