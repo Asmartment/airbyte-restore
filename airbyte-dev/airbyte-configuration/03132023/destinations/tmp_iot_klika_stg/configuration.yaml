@@ -1,0 +1,16 @@
+resource_name: TMP IoT Klika STG
+definition_type: destination
+definition_id: 424892c4-daac-4491-b35d-c6688ba547ba
+definition_image: airbyte/destination-snowflake
+definition_version: 0.4.47
+configuration:
+  host: yqb44523.us-east-1.snowflakecomputing.com
+  role: IOT_STAGING_ROLE
+  schema: IOT_STAGING_SCHEMA
+  database: IOT_STAGING_DATABASE
+  username: IOT_STAGING
+  warehouse: IOT_STAGING_WAREHOUSE
+  credentials:
+    password: '**********'
+  loading_method:
+    method: Standard
