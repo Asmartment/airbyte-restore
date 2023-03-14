@@ -1,0 +1,1996 @@
+definition_type: connection
+resource_name: common-dev-postgres-leasing-qa <> Snowflake
+source_configuration_path: sources/common_dev_postgres_leasing_qa/configuration.yaml
+destination_configuration_path: destinations/snowflake/configuration.yaml
+configuration:
+  sync_catalog:
+    streams:
+    - stream:
+        name: rental_insurancy_policy_status
+        json_schema:
+          type: object
+          properties:
+            rental_insurance_policy_status_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - rental_insurance_policy_status_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - rental_insurance_policy_status_name
+        alias_name: rental_insurancy_policy_status
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_quext_role_has_permission
+        json_schema:
+          type: object
+          properties:
+            quext_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            permission_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - quext_role_id
+        - - permission_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - quext_role_id
+        - - permission_name
+        alias_name: admin_quext_role_has_permission
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_base_role
+        json_schema:
+          type: object
+          properties:
+            base_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            disabled_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            base_role_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - base_role_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - base_role_id
+        alias_name: admin_base_role
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: searchable_occupancy
+        json_schema:
+          type: object
+          properties:
+            end_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            occupancy_phase_index:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            c_unit_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_phase_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            market_rent_rate_at_start:
+              $ref: WellKnownTypes.json#/definitions/Number
+            household_move_out_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_phase_span:
+              $ref: WellKnownTypes.json#/definitions/String
+            household_move_in_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            current_status:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            start_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: searchable_occupancy
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: party_party_custom_tag
+        json_schema:
+          type: object
+          properties:
+            custom_tag_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            custom_tag_icon_uri:
+              $ref: WellKnownTypes.json#/definitions/String
+            party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: party_party_custom_tag
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_base_role_has_permission
+        json_schema:
+          type: object
+          properties:
+            base_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            permission_group_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            permission_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - base_role_id
+        - - permission_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - base_role_id
+        - - permission_name
+        alias_name: admin_base_role_has_permission
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: pet
+        json_schema:
+          type: object
+          properties:
+            pet_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            pet_weight:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            pet_sex:
+              $ref: WellKnownTypes.json#/definitions/String
+            pet_breed:
+              $ref: WellKnownTypes.json#/definitions/String
+            pet_owner_party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            pet_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            pet_species:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - pet_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - pet_id
+        alias_name: pet
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: renewal_offer_letter
+        json_schema:
+          type: object
+          properties:
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            header:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            paragraphs:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        alias_name: renewal_offer_letter
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_customer_user
+        json_schema:
+          type: object
+          properties:
+            user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            disabled_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            customer_user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            inherits_new_community:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - user_id
+        - - customer_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - user_id
+        - - customer_id
+        alias_name: admin_customer_user
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: relationship_permission
+        json_schema:
+          type: object
+          properties:
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            relationship_permission_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - relationship_permission_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - relationship_permission_name
+        alias_name: relationship_permission
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: current_occupancy
+        json_schema:
+          type: object
+          properties:
+            end_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            occupancy_phase_index:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            c_unit_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_phase_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            market_rent_rate_at_start:
+              $ref: WellKnownTypes.json#/definitions/Number
+            household_move_out_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_phase_span:
+              $ref: WellKnownTypes.json#/definitions/String
+            household_move_in_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            current_status:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            start_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: current_occupancy
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: occupancy
+        json_schema:
+          type: object
+          properties:
+            end_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            household_move_out_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            household_move_in_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            current_status:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            start_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - occupancy_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - occupancy_id
+        alias_name: occupancy
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: occupancy_relationship_type
+        json_schema:
+          type: object
+          properties:
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            relationship_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - relationship_type_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - relationship_type_name
+        alias_name: occupancy_relationship_type
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: renewal_offer
+        json_schema:
+          type: object
+          properties:
+            price:
+              $ref: WellKnownTypes.json#/definitions/Number
+            term_length:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            renewal_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: renewal_offer
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: permission_to_enter
+        json_schema:
+          type: object
+          properties:
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            pte_phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            pte_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            pte_relationship:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - party_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - party_id
+        alias_name: permission_to_enter
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_quext_user
+        json_schema:
+          type: object
+          properties:
+            valid_through:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - user_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - user_id
+        alias_name: admin_quext_user
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: unit
+        json_schema:
+          type: object
+          properties:
+            c_unit_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            space_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - unit_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - unit_id
+        alias_name: unit
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: party
+        json_schema:
+          type: object
+          properties:
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            party_move_out_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            party_application_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            c_family_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_given_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            party_move_in_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            contact_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - party_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - party_id
+        alias_name: party
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_user
+        json_schema:
+          type: object
+          properties:
+            cognito_identity_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            valid_through:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            email_address:
+              $ref: WellKnownTypes.json#/definitions/String
+            user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            disabled_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            last_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            first_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - user_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - user_id
+        alias_name: admin_user
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_permission
+        json_schema:
+          type: object
+          properties:
+            permission_group_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            permission_description:
+              $ref: WellKnownTypes.json#/definitions/String
+            disabled_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            permission_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - permission_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - permission_name
+        alias_name: admin_permission
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: vacate_reason
+        json_schema:
+          type: object
+          properties:
+            vacate_reason_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - vacate_reason_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - vacate_reason_name
+        alias_name: vacate_reason
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: customer_summary
+        json_schema:
+          type: object
+          properties:
+            c_phone_number:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            currently_active:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            c_customer_display_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_email:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_logo_file_location:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: customer_summary
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: relationship_type_has_permission
+        json_schema:
+          type: object
+          properties:
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            relationship_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            relationship_permission_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - relationship_type_name
+        - - relationship_permission_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - relationship_type_name
+        - - relationship_permission_name
+        alias_name: relationship_type_has_permission
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: non_renewal_reason
+        json_schema:
+          type: object
+          properties:
+            non_renewal_reason_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - non_renewal_reason_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - non_renewal_reason_name
+        alias_name: non_renewal_reason
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_customer_user_has_role_for_customer_globally
+        json_schema:
+          type: object
+          properties:
+            user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - user_id
+        - - customer_id
+        - - customer_role_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - user_id
+        - - customer_id
+        - - customer_role_id
+        alias_name: admin_customer_user_has_role_for_customer_globally
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: business_unit
+        json_schema:
+          type: object
+          properties:
+            c_state:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_address:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_email:
+              $ref: WellKnownTypes.json#/definitions/String
+            latitude:
+              $ref: WellKnownTypes.json#/definitions/Number
+            disabled_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            sync:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            c_postal_code:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_phone_number:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_community_short_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            sms_phone_number:
+              $ref: WellKnownTypes.json#/definitions/String
+            timezone_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_business_unit_display_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_city:
+              $ref: WellKnownTypes.json#/definitions/String
+            longitude:
+              $ref: WellKnownTypes.json#/definitions/Number
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        alias_name: business_unit
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: user_has_custom_role_at_community
+        json_schema:
+          type: object
+          properties:
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - user_id
+        - - customer_id
+        - - community_id
+        - - customer_role_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - user_id
+        - - customer_id
+        - - community_id
+        - - customer_role_id
+        alias_name: user_has_custom_role_at_community
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: lease_values_in_effect
+        json_schema:
+          type: object
+          properties:
+            occupancy_phase_index:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            rent_amount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            lease_start_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            lease_expiration_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - occupancy_id
+        - - occupancy_phase_index
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - occupancy_id
+        - - occupancy_phase_index
+        alias_name: lease_values_in_effect
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: custom_tag_icon
+        json_schema:
+          type: object
+          properties:
+            custom_tag_icon_uri:
+              $ref: WellKnownTypes.json#/definitions/String
+            custom_tag_icon_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - custom_tag_icon_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - custom_tag_icon_id
+        alias_name: custom_tag_icon
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: party_has_custom_tag
+        json_schema:
+          type: object
+          properties:
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            custom_tag_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - community_id
+        - - party_id
+        - - custom_tag_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - community_id
+        - - party_id
+        - - custom_tag_name
+        alias_name: party_has_custom_tag
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_quext_role
+        json_schema:
+          type: object
+          properties:
+            quext_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            quext_role_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - quext_role_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - quext_role_id
+        alias_name: admin_quext_role
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_customer_role
+        json_schema:
+          type: object
+          properties:
+            base_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_role_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_role_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_role_id
+        alias_name: admin_customer_role
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: party_association
+        json_schema:
+          type: object
+          properties:
+            associated_party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            primary_party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - primary_party_id
+        - - associated_party_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - primary_party_id
+        - - associated_party_id
+        alias_name: party_association
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: rental_insurance_policy_type
+        json_schema:
+          type: object
+          properties:
+            rental_insurance_policy_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - rental_insurance_policy_type_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - rental_insurance_policy_type_name
+        alias_name: rental_insurance_policy_type
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: ntv_received_from_party
+        json_schema:
+          type: object
+          properties:
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            reason_for_vacating:
+              $ref: WellKnownTypes.json#/definitions/String
+            notifying_party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            vacate_notice_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - vacate_notice_id
+        - - notifying_party_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - vacate_notice_id
+        - - notifying_party_id
+        alias_name: ntv_received_from_party
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: current_occupancy_party
+        json_schema:
+          type: object
+          properties:
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            valid_span:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_family_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            relationship_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_given_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            contact_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: current_occupancy_party
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: business_party_custom_tag
+        json_schema:
+          type: object
+          properties:
+            custom_tag_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            custom_tag_icon_uri:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: business_party_custom_tag
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: occupancy_relationship
+        json_schema:
+          type: object
+          properties:
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            valid_span:
+              $ref: WellKnownTypes.json#/definitions/String
+            relationship_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - occupancy_id
+        - - party_id
+        - - valid_span
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - occupancy_id
+        - - party_id
+        - - valid_span
+        alias_name: occupancy_relationship
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: vehicle
+        json_schema:
+          type: object
+          properties:
+            vehicle_make:
+              $ref: WellKnownTypes.json#/definitions/String
+            vehicle_color:
+              $ref: WellKnownTypes.json#/definitions/String
+            vehicle_license_plate_text:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            license_plate_region:
+              $ref: WellKnownTypes.json#/definitions/String
+            vehicle_model:
+              $ref: WellKnownTypes.json#/definitions/String
+            license_plate_country:
+              $ref: WellKnownTypes.json#/definitions/String
+            vehicle_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            primary_driver_party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            vehicle_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - vehicle_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - vehicle_id
+        alias_name: vehicle
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: notice_of_non_renewal
+        json_schema:
+          type: object
+          properties:
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            reason_for_not_renewing:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            vacate_notice_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - vacate_notice_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - vacate_notice_id
+        alias_name: notice_of_non_renewal
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: occupancy_status
+        json_schema:
+          type: object
+          properties:
+            occupancy_status_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - occupancy_status_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - occupancy_status_name
+        alias_name: occupancy_status
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: vacate_notice
+        json_schema:
+          type: object
+          properties:
+            vacate_notice_days_in_advance:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            termination_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            additional_information:
+              $ref: WellKnownTypes.json#/definitions/String
+            declared_move_out_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            vacate_notice_delivered_on_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            reason_for_vacating:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            canceled_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            vacate_notice_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            vacate_notice_span:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - vacate_notice_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - vacate_notice_id
+        alias_name: vacate_notice
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: occupancy_has_custom_tag
+        json_schema:
+          type: object
+          properties:
+            custom_tag_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - occupancy_id
+        - - custom_tag_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - occupancy_id
+        - - custom_tag_name
+        alias_name: occupancy_has_custom_tag
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: transaction
+        json_schema:
+          type: object
+          properties:
+            end_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+            is_credit:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            transaction_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_phase_index:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            amount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            should_prorate:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            charge_code:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            frequency:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            has_override:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            override_reason:
+              $ref: WellKnownTypes.json#/definitions/String
+            start_date:
+              $ref: WellKnownTypes.json#/definitions/Date
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: transaction
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: customer
+        json_schema:
+          type: object
+          properties:
+            c_phone_number:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            is_active:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            c_customer_display_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_email:
+              $ref: WellKnownTypes.json#/definitions/String
+            disabled_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_logo_file_location:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        alias_name: customer
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: customer_active
+        json_schema:
+          type: object
+          properties:
+            active_period:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - active_period
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - active_period
+        alias_name: customer_active
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: occupancy_phase
+        json_schema:
+          type: object
+          properties:
+            occupancy_phase_index:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            rental_series_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            renewal_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_phase_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            initiating_document_content_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            reservation_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            market_rent_rate_at_start:
+              $ref: WellKnownTypes.json#/definitions/Number
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_phase_span:
+              $ref: WellKnownTypes.json#/definitions/String
+            initiating_document_display_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            initiating_document_image_uri:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - occupancy_id
+        - - occupancy_phase_index
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - occupancy_id
+        - - occupancy_phase_index
+        alias_name: occupancy_phase
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: occupancy_custom_tag
+        json_schema:
+          type: object
+          properties:
+            custom_tag_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            custom_tag_icon_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - custom_tag_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - custom_tag_name
+        alias_name: occupancy_custom_tag
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: renewal
+        json_schema:
+          type: object
+          properties:
+            accepted_offer:
+              $ref: WellKnownTypes.json#/definitions/String
+            reason:
+              $ref: WellKnownTypes.json#/definitions/String
+            require_application:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            additional_information:
+              $ref: WellKnownTypes.json#/definitions/String
+            fee:
+              $ref: WellKnownTypes.json#/definitions/Number
+            renewal_uuid:
+              $ref: WellKnownTypes.json#/definitions/String
+            rent:
+              $ref: WellKnownTypes.json#/definitions/Number
+            type:
+              $ref: WellKnownTypes.json#/definitions/String
+            status:
+              $ref: WellKnownTypes.json#/definitions/String
+            extend_renewal_offer:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - renewal_uuid
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - renewal_uuid
+        alias_name: renewal
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: occupancy_phase_type
+        json_schema:
+          type: object
+          properties:
+            occupancy_phase_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - occupancy_phase_type_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - occupancy_phase_type_name
+        alias_name: occupancy_phase_type
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: rental_insurance
+        json_schema:
+          type: object
+          properties:
+            policy_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            policy_expiration:
+              $ref: WellKnownTypes.json#/definitions/Date
+            insured_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            policy_number:
+              $ref: WellKnownTypes.json#/definitions/String
+            rental_insurance_policy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            policy_status:
+              $ref: WellKnownTypes.json#/definitions/String
+            policy_start:
+              $ref: WellKnownTypes.json#/definitions/Date
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            document_image_uri:
+              $ref: WellKnownTypes.json#/definitions/String
+            carrier_name:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - rental_insurance_policy_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - rental_insurance_policy_id
+        alias_name: rental_insurance
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_quext_user_has_quext_role
+        json_schema:
+          type: object
+          properties:
+            quext_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - user_id
+        - - quext_role_id
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - user_id
+        - - quext_role_id
+        alias_name: admin_quext_user_has_quext_role
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_customer_role_modifies_permission
+        json_schema:
+          type: object
+          properties:
+            permission_group_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            permission_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            modified_permission_value:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_role_id
+        - - permission_name
+        - - permission_group_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_role_id
+        - - permission_name
+        - - permission_group_name
+        alias_name: admin_customer_role_modifies_permission
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: searchable_occupancy_party
+        json_schema:
+          type: object
+          properties:
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            party_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            valid_span:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_family_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            relationship_type_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            c_given_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            occupancy_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            contact_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key: []
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key: []
+        alias_name: searchable_occupancy_party
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: admin_permission_group
+        json_schema:
+          type: object
+          properties:
+            permission_group_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            valid_from:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - permission_group_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - permission_group_name
+        alias_name: admin_permission_group
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: party_custom_tag
+        json_schema:
+          type: object
+          properties:
+            custom_tag_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            business_unit_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            custom_tag_icon_id:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - custom_tag_name
+        namespace: leasing
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - customer_id
+        - - business_unit_id
+        - - custom_tag_name
+        alias_name: party_custom_tag
+        selected: true
+        field_selection_enabled: false
+  status: active
+  schema_change: no_change
+  notify_schema_changes: true
+  non_breaking_changes_preference: ignore
+  namespace_definition: customformat
+  namespace_format: pms${SOURCE_NAMESPACE}_qa
+  prefix: ''
+  schedule_type: basic
+  schedule_data:
+    basic_schedule:
+      time_unit: hours
+      units: 24
+  operations:
+  - name: Normalization
+    operator_configuration:
+      operator_type: normalization
+      normalization:
+        option: basic
+  geography: auto

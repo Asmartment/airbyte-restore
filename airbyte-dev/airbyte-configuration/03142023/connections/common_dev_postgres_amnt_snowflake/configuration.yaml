@@ -1,0 +1,1186 @@
+definition_type: connection
+resource_name: common-dev-postgres-amnt <> Snowflake
+source_configuration_path: sources/common_dev_postgres_amnt/configuration.yaml
+destination_configuration_path: destinations/snowflake/configuration.yaml
+configuration:
+  sync_catalog:
+    streams:
+    - stream:
+        name: community_groups_aud
+        json_schema:
+          type: object
+          properties:
+            rev:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            charge_code_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            revtype:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            discount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            discount_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            total:
+              $ref: WellKnownTypes.json#/definitions/Number
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            group_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            revend:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        - - rev
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        - - rev
+        alias_name: community_groups_aud
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_groups
+        json_schema:
+          type: object
+          properties:
+            total:
+              $ref: WellKnownTypes.json#/definitions/Number
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            charge_code_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            group_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            discount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            discount_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: community_groups
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: customers
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            authorized:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: customers
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_groups_locations_aud
+        json_schema:
+          type: object
+          properties:
+            rev:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            revend:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            revtype:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            community_group_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            location_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        - - rev
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        - - rev
+        alias_name: community_groups_locations_aud
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: customer_users
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            identity_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            last_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            first_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: customer_users
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_amenities
+        json_schema:
+          type: object
+          properties:
+            total:
+              $ref: WellKnownTypes.json#/definitions/Number
+            amenity_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            charge_code:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            discount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            discount_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: community_amenities
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_working_hours
+        json_schema:
+          type: object
+          properties:
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            isclosed:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            close:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            open:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: community_working_hours
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: identities
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            last_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            identity_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            first_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            idp_user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+            auth_role:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: identities
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: customer_users_acl_configs
+        json_schema:
+          type: object
+          properties:
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            role_customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            user_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            is_global:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: customer_users_acl_configs
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_amenities_locations_aud
+        json_schema:
+          type: object
+          properties:
+            rev:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            revend:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            revtype:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            location_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_amenity_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        - - rev
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        - - rev
+        alias_name: community_amenities_locations_aud
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_amenities_locations
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            location_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_amenity_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: community_amenities_locations
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_amenities_aud
+        json_schema:
+          type: object
+          properties:
+            rev:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            amenity_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            charge_code:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            revtype:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            discount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            discount_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            total:
+              $ref: WellKnownTypes.json#/definitions/Number
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            revend:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        - - rev
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        - - rev
+        alias_name: community_amenities_aud
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: user_roles
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            priority:
+              $ref: WellKnownTypes.json#/definitions/Number
+            is_default:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: user_roles
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_leasing_agents
+        json_schema:
+          type: object
+          properties:
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            role:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: community_leasing_agents
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: groups_aud
+        json_schema:
+          type: object
+          properties:
+            rev:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            revtype:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            discount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            discount_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            total:
+              $ref: WellKnownTypes.json#/definitions/Number
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            price:
+              $ref: WellKnownTypes.json#/definitions/Number
+            revend:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        - - rev
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        - - rev
+        alias_name: groups_aud
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: user_role_permissions
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            role_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            permission:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: user_role_permissions
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: revinfo
+        json_schema:
+          type: object
+          properties:
+            rev:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            revtstmp:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - rev
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - rev
+        alias_name: revinfo
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: amenities
+        json_schema:
+          type: object
+          properties:
+            discount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            discount_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            quantity_based_pricing:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            total:
+              $ref: WellKnownTypes.json#/definitions/Number
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            price:
+              $ref: WellKnownTypes.json#/definitions/Number
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            pricing_unit:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: amenities
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: communities
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            timezone_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            auth_data:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: communities
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: amenities_aud
+        json_schema:
+          type: object
+          properties:
+            rev:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            revtype:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            discount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            discount_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            quantity_based_pricing:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            total:
+              $ref: WellKnownTypes.json#/definitions/Number
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            price:
+              $ref: WellKnownTypes.json#/definitions/Number
+            revend:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            pricing_unit:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        - - rev
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        - - rev
+        alias_name: amenities_aud
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: locations
+        json_schema:
+          type: object
+          properties:
+            apartment_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            building_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            building_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            apartment_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: locations
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: group_items_aud
+        json_schema:
+          type: object
+          properties:
+            rev:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            amount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            amenity_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            group_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            revend:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            revtype:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        - - rev
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        - - rev
+        alias_name: group_items_aud
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: flyway_schema_history
+        json_schema:
+          type: object
+          properties:
+            installed_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            success:
+              $ref: WellKnownTypes.json#/definitions/Boolean
+            checksum:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            installed_on:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithoutTimezone
+            type:
+              $ref: WellKnownTypes.json#/definitions/String
+            version:
+              $ref: WellKnownTypes.json#/definitions/String
+            script:
+              $ref: WellKnownTypes.json#/definitions/String
+            execution_time:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            installed_rank:
+              $ref: WellKnownTypes.json#/definitions/Integer
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - installed_rank
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - installed_rank
+        alias_name: flyway_schema_history
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: locations_aud
+        json_schema:
+          type: object
+          properties:
+            apartment_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            building_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            building_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            rev:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            revend:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            revtype:
+              $ref: WellKnownTypes.json#/definitions/Integer
+            apartment_name:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        - - rev
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        - - rev
+        alias_name: locations_aud
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_groups_locations
+        json_schema:
+          type: object
+          properties:
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            community_group_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            location_id:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: community_groups_locations
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: groups
+        json_schema:
+          type: object
+          properties:
+            total:
+              $ref: WellKnownTypes.json#/definitions/Number
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            price:
+              $ref: WellKnownTypes.json#/definitions/Number
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            discount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            description:
+              $ref: WellKnownTypes.json#/definitions/String
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            customer_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            discount_type:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: groups
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: group_items
+        json_schema:
+          type: object
+          properties:
+            amount:
+              $ref: WellKnownTypes.json#/definitions/Number
+            amenity_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            group_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_by:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_by:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: group_items
+        selected: true
+        field_selection_enabled: false
+    - stream:
+        name: community_management
+        json_schema:
+          type: object
+          properties:
+            community_id:
+              $ref: WellKnownTypes.json#/definitions/String
+            role:
+              $ref: WellKnownTypes.json#/definitions/String
+            updated_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            phone:
+              $ref: WellKnownTypes.json#/definitions/String
+            name:
+              $ref: WellKnownTypes.json#/definitions/String
+            created_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            id:
+              $ref: WellKnownTypes.json#/definitions/String
+            deleted_at:
+              $ref: WellKnownTypes.json#/definitions/TimestampWithTimezone
+            email:
+              $ref: WellKnownTypes.json#/definitions/String
+        supported_sync_modes:
+        - full_refresh
+        - incremental
+        default_cursor_field: []
+        source_defined_primary_key:
+        - - id
+        namespace: amnt
+      config:
+        sync_mode: full_refresh
+        destination_sync_mode: overwrite
+        cursor_field: []
+        primary_key:
+        - - id
+        alias_name: community_management
+        selected: true
+        field_selection_enabled: false
+  status: active
+  schema_change: no_change
+  notify_schema_changes: true
+  non_breaking_changes_preference: ignore
+  namespace_definition: customformat
+  namespace_format: pms${SOURCE_NAMESPACE}
+  prefix: ''
+  schedule_type: basic
+  schedule_data:
+    basic_schedule:
+      time_unit: hours
+      units: 24
+  operations:
+  - name: Normalization
+    operator_configuration:
+      operator_type: normalization
+      normalization:
+        option: basic
+  geography: auto
